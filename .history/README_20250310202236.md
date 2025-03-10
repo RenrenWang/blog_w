@@ -1,0 +1,147 @@
+# Next.js 个人博客系统
+
+这是一个使用Next.js、TypeScript、Tailwind CSS和Shadcn UI构建的现代个人博客系统。
+
+## 功能特点
+
+- 响应式设计，适配各种设备
+- 暗色/亮色主题切换
+- 基于Markdown的博客文章
+- 文章标签分类
+- 评论系统（基于MongoDB）
+- SEO友好
+- 高性能页面加载
+
+## 技术栈
+
+- **Next.js 14**: React框架，提供服务端渲染和静态站点生成
+- **TypeScript**: 类型安全的JavaScript超集
+- **Tailwind CSS**: 实用优先的CSS框架
+- **Shadcn UI**: 基于Radix UI的组件库
+- **MongoDB**: 用于存储评论数据
+- **Mongoose**: MongoDB对象模型工具
+- **gray-matter**: 解析Markdown文件的前置元数据
+- **remark**: Markdown处理器
+
+## 快速开始
+
+### 前提条件
+
+- Node.js 18.0.0或更高版本
+- npm或yarn
+- MongoDB（本地或远程）
+
+### 安装
+
+1. 克隆仓库
+
+```bash
+git clone https://github.com/yourusername/next-personal-blog.git
+cd next-personal-blog
+```
+
+2. 安装依赖
+
+```bash
+npm install
+# 或
+yarn install
+```
+
+3. 配置环境变量
+
+创建`.env.local`文件并添加以下内容：
+
+```
+MONGODB_URI=mongodb://localhost:27017/mock
+```
+
+根据你的MongoDB配置调整URI。
+
+4. 运行开发服务器
+
+```bash
+npm run dev
+# 或
+yarn dev
+```
+
+5. 在浏览器中打开 [http://localhost:3000](http://localhost:3000)
+
+## 添加博客文章
+
+1. 在`_posts`目录中创建一个新的Markdown文件，例如`my-new-post.md`
+2. 添加前置元数据：
+
+```markdown
+---
+title: '文章标题'
+date: '2023-03-01'
+excerpt: '文章摘要'
+coverImage: '封面图片URL'
+tags: ['标签1', '标签2']
+---
+
+# 文章内容
+
+这里是文章的正文内容...
+```
+
+3. 重新启动开发服务器，新文章将自动显示在博客列表中
+
+## 评论系统
+
+博客系统包含一个基于MongoDB的评论功能，允许读者在文章下方发表评论。评论系统包括：
+
+- 评论表单：用户可以提供姓名、邮箱和评论内容
+- 评论列表：显示所有评论，按时间倒序排列
+- 数据验证：确保所有必填字段都已填写，并验证邮箱格式
+
+## 构建和部署
+
+### 构建静态网站
+
+```bash
+npm run build
+# 或
+yarn build
+```
+
+### 启动生产服务器
+
+```bash
+npm run start
+# 或
+yarn start
+```
+
+### 部署
+
+这个博客系统可以部署到任何支持Node.js的平台，如Vercel、Netlify、AWS等。
+
+推荐使用Vercel进行部署：
+
+```bash
+npm install -g vercel
+vercel
+```
+
+确保在部署环境中设置`MONGODB_URI`环境变量，指向你的MongoDB数据库。
+
+## 自定义
+
+### 修改主题
+
+编辑`app/globals.css`文件中的CSS变量来自定义主题颜色。
+
+### 修改布局
+
+编辑`app/layout.tsx`文件来修改全局布局。
+
+### 添加新页面
+
+在`app`目录中创建新的目录和`page.tsx`文件来添加新页面。
+
+## 许可证
+
+MIT 
