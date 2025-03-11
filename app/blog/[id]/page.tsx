@@ -33,10 +33,10 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
   return (
     <article className="container max-w-3xl py-12 px-4 md:px-6">
       <div className="space-y-4 text-center mb-8">
-        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">
           {post.title}
         </h1>
-        <div className="text-muted-foreground">
+        <div className="text-foreground/80">
           {post.date && <time dateTime={post.date}>{formatDate(post.date)}</time>}
         </div>
       </div>
@@ -54,7 +54,7 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
         </div>
       )}
       
-      <div className="prose prose-lg dark:prose-invert max-w-none">
+      <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-strong:text-foreground prose-a:text-primary hover:prose-a:text-primary/80">
         {processedContent}
       </div>
       
@@ -113,20 +113,35 @@ function processCodeBlocks(htmlContent: string, rawContent: string) {
     // 添加代码高亮块
     const codeBlock = codeBlocks[blockIndex]
     parts.push(
-      <div key={`code-${blockIndex}`} className="my-6 rounded-lg overflow-hidden">
+      <div key={`code-${blockIndex}`} className="my-6 rounded-lg overflow-hidden shadow-lg">
+        <div className="flex items-center justify-between px-4 py-2 bg-[#282c34] text-gray-200 text-sm">
+          <span>{codeBlock.language || 'text'}</span>
+        </div>
         <SyntaxHighlighter
           language={codeBlock.language || 'text'}
           style={oneDark}
           showLineNumbers={true}
           wrapLines={true}
           customStyle={{
-            borderRadius: '0.5rem',
-            fontSize: '0.9rem',
+            borderRadius: '0',
+            fontSize: '0.95rem',
             margin: 0,
+            backgroundColor: '#1a1b26', // 更深的背景色
           }}
           lineNumberStyle={{
-            color: '#6b7280',
-            opacity: 0.6,
+            color: '#8b949e', // 更亮的行号颜色
+            opacity: 0.8,
+            paddingRight: '1em',
+            textAlign: 'right',
+            minWidth: '3em',
+            borderRight: '1px solid #30363d',
+            marginRight: '1em',
+          }}
+          codeTagProps={{
+            style: {
+              fontSize: '0.95rem',
+              fontFamily: 'Menlo, Monaco, Consolas, "Courier New", monospace',
+            }
           }}
         >
           {codeBlock.code}

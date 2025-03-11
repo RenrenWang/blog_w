@@ -20,7 +20,7 @@
     --secondary-foreground: 222.2 47.4% 11.2%;
  
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted-foreground: 215.4 16.3% 36.9%;
  
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -37,17 +37,17 @@
     /* 文章内容自定义变量 */
     --tw-prose-body: hsl(222.2 84% 4.9%);
     --tw-prose-headings: hsl(222.2 84% 4.9%);
-    --tw-prose-lead: hsl(215.4 16.3% 46.9%);
+    --tw-prose-lead: hsl(215.4 16.3% 36.9%);
     --tw-prose-links: hsl(222.2 47.4% 11.2%);
     --tw-prose-links-hover: hsl(222.2 47.4% 30%);
     --tw-prose-bold: hsl(222.2 84% 4.9%);
-    --tw-prose-counters: hsl(215.4 16.3% 46.9%);
-    --tw-prose-bullets: hsl(215.4 16.3% 46.9%);
+    --tw-prose-counters: hsl(215.4 16.3% 36.9%);
+    --tw-prose-bullets: hsl(215.4 16.3% 36.9%);
     --tw-prose-hr: hsl(214.3 31.8% 91.4%);
     --tw-prose-quotes: hsl(222.2 84% 4.9%);
     --tw-prose-quote-borders: hsl(222.2 47.4% 11.2% / 0.2);
     --tw-prose-quote-bg: hsl(210 40% 96.1% / 0.5);
-    --tw-prose-captions: hsl(215.4 16.3% 46.9%);
+    --tw-prose-captions: hsl(215.4 16.3% 36.9%);
     --tw-prose-code: hsl(222.2 47.4% 11.2%);
     --tw-prose-code-bg: hsl(210 40% 96.1%);
     --tw-prose-pre-code: hsl(210 40% 98%);
@@ -73,7 +73,7 @@
     --secondary-foreground: 210 40% 98%;
  
     --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted-foreground: 215 20.2% 75%;
  
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
@@ -88,17 +88,17 @@
     /* 暗色模式文章内容自定义变量 */
     --tw-prose-body: hsl(210 40% 98%);
     --tw-prose-headings: hsl(210 40% 98%);
-    --tw-prose-lead: hsl(215 20.2% 65.1%);
+    --tw-prose-lead: hsl(215 20.2% 75%);
     --tw-prose-links: hsl(210 40% 98%);
     --tw-prose-links-hover: hsl(210 40% 90%);
     --tw-prose-bold: hsl(210 40% 98%);
-    --tw-prose-counters: hsl(215 20.2% 65.1%);
-    --tw-prose-bullets: hsl(215 20.2% 65.1%);
+    --tw-prose-counters: hsl(215 20.2% 75%);
+    --tw-prose-bullets: hsl(215 20.2% 75%);
     --tw-prose-hr: hsl(217.2 32.6% 17.5%);
     --tw-prose-quotes: hsl(210 40% 98%);
     --tw-prose-quote-borders: hsl(210 40% 98% / 0.2);
     --tw-prose-quote-bg: hsl(217.2 32.6% 17.5% / 0.5);
-    --tw-prose-captions: hsl(215 20.2% 65.1%);
+    --tw-prose-captions: hsl(215 20.2% 75%);
     --tw-prose-code: hsl(210 40% 98%);
     --tw-prose-code-bg: hsl(217.2 32.6% 17.5%);
     --tw-prose-pre-code: hsl(210 40% 98%);
