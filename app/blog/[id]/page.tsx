@@ -24,6 +24,9 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
     notFound()
   }
   
+  // 添加调试信息
+  console.log('Raw content sample:', post.rawContent.substring(0, 200))
+  
   // 处理原始 Markdown 中的代码块
   const processedContent = processCodeBlocks(post.content, post.rawContent)
   
@@ -73,6 +76,13 @@ function processCodeBlocks(htmlContent: string, rawContent: string) {
       language: match[1] || 'text',
       code: match[2].trim()
     })
+  }
+  
+  // 添加调试信息
+  console.log('Code blocks found:', codeBlocks.length)
+  if (codeBlocks.length > 0) {
+    console.log('First code block language:', codeBlocks[0].language)
+    console.log('First code block sample:', codeBlocks[0].code.substring(0, 50))
   }
   
   // 如果没有找到代码块，直接返回 HTML 内容

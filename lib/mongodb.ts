@@ -2,11 +2,23 @@ import mongoose from 'mongoose'
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mock'
 
-// 缓存连接，避免重复连接
-let cached = global.mongoose
+// 定义连接缓存的类型
+interface MongooseCache {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+}
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null }
+// 扩展 NodeJS.Global 接口
+declare global {
+  var mongoose: MongooseCache | undefined;
+}
+
+// 缓存连接，避免重复连接
+let cached: MongooseCache = global.mongoose || { conn: null, promise: null }
+
+// 确保全局缓存存在
+if (!global.mongoose) {
+  global.mongoose = cached
 }
 
 async function connectToDatabase() {
