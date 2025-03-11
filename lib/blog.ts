@@ -17,6 +17,7 @@ export interface PostMetadata {
 
 export interface Post extends PostMetadata {
   content: string
+  rawContent: string
 }
 
 export function getSortedPostsMetadata(): PostMetadata[] {
@@ -87,5 +88,6 @@ export async function getPostData(id: string): Promise<Post> {
     coverImage: matterResult.data.coverImage || '/images/default-cover.jpg',
     tags: matterResult.data.tags || [],
     content,
+    rawContent: matterResult.content,
   }
 } 
