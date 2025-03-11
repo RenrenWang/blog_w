@@ -9,20 +9,12 @@ export function SiteFooter() {
         </p>
         <div className="flex items-center gap-4">
           <Link
-            href="https://github.com"
+            href="https://github.com/RenrenWang"
             target="_blank"
             rel="noreferrer"
             className="text-sm font-medium underline underline-offset-4"
           >
             GitHub
-          </Link>
-          <Link
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm font-medium underline underline-offset-4"
-          >
-            Twitter
           </Link>
         </div>
       </div>

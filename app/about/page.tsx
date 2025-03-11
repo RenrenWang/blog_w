@@ -49,28 +49,17 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold tracking-tight">联系方式</h2>
           <ul className="list-disc space-y-2 pl-6">
             <li>
-              <strong>邮箱：</strong> example@example.com
+              <strong>邮箱：</strong> 1011420784@qq.com
             </li>
             <li>
               <strong>GitHub：</strong>{" "}
               <a
-                href="https://github.com"
+                href="https://github.com/RenrenWang"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline"
               >
-                github.com/username
-              </a>
-            </li>
-            <li>
-              <strong>Twitter：</strong>{" "}
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline"
-              >
-                twitter.com/username
+                github.com/RenrenWang
               </a>
             </li>
           </ul>

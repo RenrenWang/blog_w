@@ -32,7 +32,7 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center">
         <div className="mr-8">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="font-bold text-xl">个人博客</span>
+            <h1 className="font-bold text-xl">WR </h1>
           </Link>
         </div>
         <nav className="flex items-center space-x-6 text-sm font-medium flex-1">
