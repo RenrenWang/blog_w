@@ -6,4 +6,5 @@ dist
 */.DS_Store
 .DS_Store
 .history
+.next/*
 .next
