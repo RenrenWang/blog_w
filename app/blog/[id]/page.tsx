@@ -7,6 +7,7 @@ import type { Metadata } from 'next'
 import { getPostData, getSortedPostsMetadata } from "@/lib/blog"
 import { formatDate } from "@/lib/utils"
 import { Comments } from "@/components/comments"
+import { PageProps } from 'next/dist/server/app-render/entry-base'
 
 // 生成静态路径参数
 export async function generateStaticParams() {
@@ -18,7 +19,7 @@ export async function generateStaticParams() {
 }
 
 // 生成动态元数据
-export async function generateMetadata(props: any): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const resolvedParams = await props.params
   const post = await getPostData(resolvedParams.id)
   
@@ -41,7 +42,7 @@ export async function generateMetadata(props: any): Promise<Metadata> {
 }
 
 // 直接使用 HTML 内容，但替换代码块为高亮组件
-export default async function BlogPost(props: any) {
+export default async function BlogPost(props: PageProps) {
   const resolvedParams = await props.params
   const post = await getPostData(resolvedParams.id)
   
