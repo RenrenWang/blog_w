@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Image from "next/image"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import type { Metadata } from 'next'
 
 import { getPostData, getSortedPostsMetadata } from "@/lib/blog"
 import { formatDate } from "@/lib/utils"
@@ -9,23 +10,44 @@ import { Comments } from "@/components/comments"
 
 // 生成静态路径参数
 export async function generateStaticParams() {
-  const posts = getSortedPostsMetadata()
+  const posts = await getSortedPostsMetadata()
   
   return posts.map((post) => ({
     id: post.id,
   }))
 }
 
+// 生成动态元数据
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const resolvedParams = await props.params
+  const post = await getPostData(resolvedParams.id)
+  
+  if (!post) {
+    return {
+      title: '文章未找到',
+      description: '请求的文章不存在'
+    }
+  }
+  
+  return {
+    title: `${post.title} | 个人博客`,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [post.coverImage],
+    },
+  }
+}
+
 // 直接使用 HTML 内容，但替换代码块为高亮组件
-export default async function BlogPost({ params }: { params: { id: string } }) {
-  const post = await getPostData(params.id)
+export default async function BlogPost(props: any) {
+  const resolvedParams = await props.params
+  const post = await getPostData(resolvedParams.id)
   
   if (!post) {
     notFound()
   }
-  
-  // 添加调试信息
-  console.log('Raw content sample:', post.rawContent.substring(0, 200))
   
   // 处理原始 Markdown 中的代码块
   const processedContent = processCodeBlocks(post.content, post.rawContent)
@@ -59,7 +81,7 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
       </div>
       
       {/* 添加评论组件 */}
-      <Comments postId={post.id} />
+      <Comments postId={resolvedParams.id} />
     </article>
   )
 }
@@ -76,13 +98,6 @@ function processCodeBlocks(htmlContent: string, rawContent: string) {
       language: match[1] || 'text',
       code: match[2].trim()
     })
-  }
-  
-  // 添加调试信息
-  console.log('Code blocks found:', codeBlocks.length)
-  if (codeBlocks.length > 0) {
-    console.log('First code block language:', codeBlocks[0].language)
-    console.log('First code block sample:', codeBlocks[0].code.substring(0, 50))
   }
   
   // 如果没有找到代码块，直接返回 HTML 内容

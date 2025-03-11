@@ -1,4 +1,4 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
 
 import { getSortedPostsMetadata } from "@/lib/blog"
 import { PostCard } from "@/components/post-card"
@@ -6,10 +6,15 @@ import { PostCard } from "@/components/post-card"
 export const metadata: Metadata = {
   title: "博客 | 个人博客",
   description: "浏览所有博客文章",
+  openGraph: {
+    title: "博客 | 个人博客",
+    description: "浏览所有博客文章",
+    type: "website",
+  },
 }
 
-export default function BlogPage() {
-  const posts = getSortedPostsMetadata()
+export default async function BlogPage() {
+  const posts = await getSortedPostsMetadata()
 
   return (
     <div className="container py-12">
@@ -19,20 +24,15 @@ export default function BlogPage() {
             博客
           </h1>
           <p className="text-xl text-muted-foreground">
-            探索我的思考、学习和经验分享
+            分享我的想法、经验和知识
           </p>
         </div>
       </div>
-      <hr className="my-8" />
-      {posts.length > 0 ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </div>
-      ) : (
-        <p className="text-center text-muted-foreground">暂无文章</p>
-      )}
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
+      </div>
     </div>
   )
 } 

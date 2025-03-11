@@ -20,7 +20,7 @@ export interface Post extends PostMetadata {
   rawContent: string
 }
 
-export function getSortedPostsMetadata(): PostMetadata[] {
+export async function getSortedPostsMetadata(): Promise<PostMetadata[]> {
   // 获取_posts目录下的所有文件名
   const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData = fileNames.map((fileName) => {
@@ -55,7 +55,7 @@ export function getSortedPostsMetadata(): PostMetadata[] {
   })
 }
 
-export function getAllPostIds() {
+export async function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory)
   return fileNames.map((fileName) => {
     return {
