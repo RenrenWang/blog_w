@@ -14,8 +14,8 @@ declare module 'next/dist/server/app-render/entry-base' {
     params: Promise<{
       [key: string]: string
     }>
-    searchParams?: {
+    searchParams?: Promise<{
       [key: string]: string | string[] | undefined
-    }
+    }>
   }
 } 

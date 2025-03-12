@@ -21,6 +21,9 @@ export async function generateStaticParams() {
 // 生成动态元数据
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const resolvedParams = await props.params
+  // 如果需要使用 searchParams，也需要 await
+  // const resolvedSearchParams = props.searchParams ? await props.searchParams : undefined
+  
   const post = await getPostData(resolvedParams.id)
   
   if (!post) {
@@ -44,6 +47,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 // 直接使用 HTML 内容，但替换代码块为高亮组件
 export default async function BlogPost(props: PageProps) {
   const resolvedParams = await props.params
+  // 如果需要使用 searchParams，也需要 await
+  // const resolvedSearchParams = props.searchParams ? await props.searchParams : undefined
+  
   const post = await getPostData(resolvedParams.id)
   
   if (!post) {
